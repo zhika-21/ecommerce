@@ -1,7 +1,20 @@
-import React from 'react'
-
+import React,{useContext} from 'react'
+import {CartContext} from '../../contex/GeneralCart'
+import { Grid, Button,Box,Typography,CardMedia } from '@mui/material'
+import { Link } from 'react-router-dom'
 export default function Header() {
+  const {allProductsInCart} = useContext(CartContext)
   return (
-    <div>Header</div>
+    <Grid container spacing={2} style={{display:"flex",justifyContent:"space-around"}}>
+      <Grid item sx={12} md={4}><Link to="/"><CardMedia component="img" image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/ITunes_Store_logo.svg/1280px-ITunes_Store_logo.svg.png" height="80"/></Link></Grid>
+      <Grid item sx={12} md={8} style={{display:"flex",alignItems:"center",textAlign:"center"}}>
+        <Box sx={{display:"flex",alignItems:"center",textAlign:"center"}}>
+          <Link to="/" style={{textDecoration:"none",color:"black"}}><Typography sx={{minWidth:150}}>Home</Typography></Link>
+          <Link to="/dashboard" style={{textDecoration:"none",color:"black"}}><Typography sx={{minWidth:150}}>DashBoard</Typography></Link>
+          <Typography sx={{minWidth:150}}>About US</Typography>
+          <Button color='secondary' variant="contained">CART 5 Products</Button>
+        </Box>
+      </Grid>
+    </Grid>
   )
 }
