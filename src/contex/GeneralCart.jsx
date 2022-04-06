@@ -8,7 +8,11 @@ const cartReducer = (state,action) =>{
 
     switch(action.type){
         case actions.ADDTOCAR:
+            // i can check if the product exist alredy if exist maybe i just modify that product and return the state
+            // if the product doesnt exist just like the next line
             return [...state,action.payload]
+        case actions.REMOVEPRODUCT:
+            return state.filter(product => product.id !== action.payload)
         default:
             return state
     }

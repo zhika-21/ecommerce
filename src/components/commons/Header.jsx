@@ -4,6 +4,7 @@ import { Grid, Button,Box,Typography,CardMedia } from '@mui/material'
 import { Link } from 'react-router-dom'
 export default function Header() {
   const {allProductsInCart} = useContext(CartContext)
+  const amountOfProducts = allProductsInCart.reduce((acc,product)=> product.qqt + acc,0)
   return (
     <Grid container spacing={2} style={{display:"flex",justifyContent:"space-around"}}>
       <Grid item sx={12} md={4}><Link to="/"><CardMedia component="img" image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/ITunes_Store_logo.svg/1280px-ITunes_Store_logo.svg.png" height="80"/></Link></Grid>
@@ -12,7 +13,7 @@ export default function Header() {
           <Link to="/" style={{textDecoration:"none",color:"black"}}><Typography sx={{minWidth:150}}>Home</Typography></Link>
           <Link to="/dashboard" style={{textDecoration:"none",color:"black"}}><Typography sx={{minWidth:150}}>DashBoard</Typography></Link>
           <Typography sx={{minWidth:150}}>About US</Typography>
-          <Button color='secondary' variant="contained">CART 5 Products</Button>
+          <Link to="/cart-description"><Button color='secondary' variant="contained">CART {amountOfProducts} Products</Button></Link>
         </Box>
       </Grid>
     </Grid>
